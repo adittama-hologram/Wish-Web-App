@@ -4,10 +4,14 @@
   "description": "Socket IO Bouncing Name App",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "node build.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^4.1.0"
   }
 }

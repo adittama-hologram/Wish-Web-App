@@ -13,6 +13,9 @@ RUN npm install
 # Copy application source code
 COPY . .
 
+# Build the obfuscated frontend files
+RUN npm run build
+
 # Expose port 3000
 EXPOSE 3000
 
