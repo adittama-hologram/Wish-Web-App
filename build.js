@@ -4,7 +4,8 @@ const JavaScriptObfuscator = require('javascript-obfuscator');
 
 const filesToObfuscate = [
     { src: 'public/main.js', dest: 'public/main.min.js' },
-    { src: 'public/form.js', dest: 'public/form.min.js' }
+    { src: 'public/form.js', dest: 'public/form.min.js' },
+    { src: 'public/remove.js', dest: 'public/remove.min.js' }
 ];
 
 console.log('Starting obfuscation process...');
