@@ -26,14 +26,14 @@ socket.on('new_wish', (wish) => {
 
 socket.on('remove_wish', (wishText) => {
     const targetText = wishText.toLowerCase();
-    
+
     // Remove from savedUserWishes
     for (let i = savedUserWishes.length - 1; i >= 0; i--) {
         if (savedUserWishes[i].toLowerCase() === targetText) {
             savedUserWishes.splice(i, 1);
         }
     }
-    
+
     // Remove from activeWishes and fade them out
     for (let i = activeWishes.length - 1; i >= 0; i--) {
         if (activeWishes[i].text.toLowerCase() === targetText) {
@@ -43,7 +43,7 @@ socket.on('remove_wish', (wishText) => {
     }
 });
 
-window.spawnAllPreExisting = function() {
+window.spawnAllPreExisting = function () {
     preExistingWishes.forEach(wish => {
         spawnBouncingWish(wish);
     });
@@ -52,18 +52,18 @@ window.spawnAllPreExisting = function() {
 function spawnBouncingWish(wishText) {
     const el = document.createElement('div');
     el.className = 'bouncing-name';
-    
+
     const envelope = document.createElement('div');
     envelope.className = 'envelope';
     envelope.textContent = '✉️';
-    
+
     const textSpan = document.createElement('div');
     textSpan.className = 'wish-text';
     textSpan.textContent = wishText;
 
     el.appendChild(envelope);
     el.appendChild(textSpan);
-    
+
     // Unified color to match the cloudy sky
     el.style.color = '#ffffff';
     el.style.textShadow = '0 2px 10px rgba(30, 58, 138, 0.8), 0 0 20px rgba(30, 58, 138, 0.6)';
@@ -72,48 +72,48 @@ function spawnBouncingWish(wishText) {
     el.style.opacity = '0'; // Hide initially to prevent flash
 
     // Bouncing logic initial position
-    let x = Math.random() * (window.innerWidth - 200);
-    let y = Math.random() * (window.innerHeight - 100);
-    let dx = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5);
-    let dy = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5);
+    let x = 100 + Math.random() * Math.max(0, window.innerWidth - 400);
+    let y = 200 + Math.random() * Math.max(0, window.innerHeight - 500);
+    let dx = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5) * 0.5;
+    let dy = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5) * 0.5;
 
     // Apply position before appending to prevent top-left flash
     el.style.transform = `translate(${x}px, ${y}px)`;
     container.appendChild(el);
-    
+
     // Force layout calculation
     el.getBoundingClientRect();
-    
+
     // Show element
     el.style.opacity = targetOpacity;
 
     function updatePosition() {
         const rect = el.getBoundingClientRect();
-        
-        if (x + rect.width >= window.innerWidth) {
-            x = window.innerWidth - rect.width;
+
+        if (x + rect.width >= window.innerWidth - 100) {
+            x = window.innerWidth - 100 - rect.width;
             dx = -dx;
-        } else if (x <= 0) {
-            x = 0;
+        } else if (x <= 100) {
+            x = 100;
             dx = -dx;
         }
-        
-        if (y + rect.height >= window.innerHeight) {
-            y = window.innerHeight - rect.height;
+
+        if (y + rect.height >= window.innerHeight - 200) {
+            y = window.innerHeight - 200 - rect.height;
             dy = -dy;
-        } else if (y <= 0) {
-            y = 0;
+        } else if (y <= 150) {
+            y = 150;
             dy = -dy;
         }
-        
+
         x += dx;
         y += dy;
-        
+
         el.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     const intervalId = setInterval(updatePosition, 16);
-    
+
     const wishObj = { el, intervalId, text: wishText };
     activeWishes.push(wishObj);
 
@@ -125,7 +125,7 @@ function spawnBouncingWish(wishText) {
 
 function fadeAndRemoveWish(wishObj) {
     wishObj.el.classList.add('vanishing');
-    
+
     setTimeout(() => {
         clearInterval(wishObj.intervalId);
         if (container.contains(wishObj.el)) {

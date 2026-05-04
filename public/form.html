@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Submit Your Wish</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body class="form-body">
-    <div class="glass-card form-container">
-        <h1>Welcome</h1>
-        <p>What is Your Wish?</p>
-        <form id="wishForm">
-            <input type="text" id="wishInput" placeholder="I wanna be a Super Man" required autocomplete="off">
-            <button type="submit" class="glow-btn">Submit</button>
-        </form>
-        <div id="successMessage" class="hidden">May Your Wish Come True!</div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="form-body">
+    <div class="main-container">
+      <div class="flex-row-fe">
+        <div class="group"></div>
+        <div class="group-1"></div>
+        <div class="group-2"></div>
+      </div>
+      <div class="group-3"></div>
+      <div class="vector">
+        <span class="samosir-mei">Samosir, 7-9 Mei 2026</span>
+      </div>
+      <div class="overlay-border-shadow">
+        <div class="background-blur"></div>
+        <div class="background-blur-4"></div>
+        <div class="background-blur-5"></div>
+        <div class="container">
+          <div class="heading"><span class="text">Welcome</span></div>
+          <div class="shadow">
+            <span class="what-is-your-wish">What is Your Wish?</span>
+          </div>
+          <form id="wishForm" class="form">
+            <div class="input">
+              <div class="container-6">
+                <input type="text" id="wishInput" class="super-man-input" placeholder="I wanna be a Super Man" required autocomplete="off">
+              </div>
+            </div>
+            <button type="submit" class="button codia-button">
+              <div class="button-shadow"></div>
+              <span class="text-7">Submit</span>
+            </button>
+          </form>
+          <div class="shadow-8 hidden" id="successMessage">
+            <span class="may-your-wish-come-true"
+              >May Your Wish Come True!</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="flex-row-ccd">
+        <div class="group-9"></div>
+        <div class="group-a"></div>
+        <div class="group-b"></div>
+      </div>
     </div>
-
+    
     <script src="/socket.io/socket.io.js"></script>
     <script src="form.min.js"></script>
-</body>
-
+  </body>
 </html>
