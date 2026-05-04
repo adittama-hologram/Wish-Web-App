@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "3010:3010"
     environment:
-      - PORT=3000
+      - PORT=3010
     restart: unless-stopped

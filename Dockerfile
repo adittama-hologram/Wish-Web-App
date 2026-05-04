@@ -16,8 +16,8 @@ COPY . .
 # Build the obfuscated frontend files
 RUN npm run build
 
-# Expose port 3000
-EXPOSE 3000
+# Expose port 3010
+EXPOSE 3010
 
 # Start the application
 CMD ["npm", "start"]
