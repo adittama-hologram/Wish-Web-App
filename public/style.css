@@ -26,8 +26,10 @@ body {
     background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .glass-card {
@@ -625,5 +627,5 @@ button.codia-button {
   left: 12.45%;
   background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-05-04/74JksBZhs6.png)
     no-repeat center;
-  background-size: 100% 100%;
+  background-size: contain;
 }
