@@ -10,15 +10,12 @@ const preExistingWishes = [
     "I want to climb Mt. Everest", "I want to be debt-free", "To speak Japanese fluently", "I want a lifetime supply of pizza", "I want to write a book",
     "To start a successful business", "I want to go to space", "I want a magical wand", "To learn to cook well", "I want to see the northern lights",
     "I want a home gym", "To learn to code", "I want to run a marathon", "I want a new bicycle", "I want world peace",
-    "I want to write a song", "I want to learn dancing", "I want to visit Tokyo", "I want a new camera", "I want a pet cat",
-    "I want to grow a garden", "I want to bake a cake", "To learn magic tricks", "I want to go scuba diving", "I want to write a poem",
-    "I want to build a robot", "To learn a new language", "I want a vintage car", "I want a telescope", "I want to be a pilot",
-    "I want to learn painting", "I want to visit Paris", "I want a big library", "I want to make a movie", "I want to help people"
+    "I want to write a song", "I want to learn dancing", "I want to visit Tokyo", "I want a new camera", "I want a pet cat"
 ];
 
 socket.on('new_wish', (wish) => {
     savedUserWishes.push(wish);
-    if (savedUserWishes.length > 50) {
+    if (savedUserWishes.length > 35) {
         savedUserWishes.shift();
     }
     spawnBouncingWish(wish);
@@ -48,6 +45,12 @@ window.spawnAllPreExisting = function () {
         spawnBouncingWish(wish);
     });
 };
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === '0') {
+        window.spawnAllPreExisting();
+    }
+});
 
 function spawnBouncingWish(wishText) {
     const el = document.createElement('div');
@@ -117,7 +120,7 @@ function spawnBouncingWish(wishText) {
     const wishObj = { el, intervalId, text: wishText };
     activeWishes.push(wishObj);
 
-    if (activeWishes.length > 50) {
+    if (activeWishes.length > 35) {
         const oldest = activeWishes.shift();
         fadeAndRemoveWish(oldest);
     }
