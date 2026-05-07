@@ -77,8 +77,8 @@ function spawnBouncingWish(wishText) {
     // Bouncing logic initial position
     let x = 100 + Math.random() * Math.max(0, window.innerWidth - 400);
     let y = 200 + Math.random() * Math.max(0, window.innerHeight - 500);
-    let dx = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5) * 0.5;
-    let dy = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5) * 0.5;
+    let dx = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5) * 0.25;
+    let dy = (Math.random() > 0.5 ? 1 : -1) * (1 + Math.random() * 1.5) * 0.25;
 
     // Apply position before appending to prevent top-left flash
     el.style.transform = `translate(${x}px, ${y}px)`;
