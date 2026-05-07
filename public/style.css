@@ -185,6 +185,7 @@ input[type="text"]:focus {
 
 .wish-text {
     opacity: 0;
+    font-size: 1.5em;
     transform: scale(0) translateY(20px);
     animation: textPopOut 0.8s 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
